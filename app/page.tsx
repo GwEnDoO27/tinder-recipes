@@ -20,7 +20,7 @@ export default function Home() {
 
   const getRandomRecipes = useCallback(async () => {
     try {
-      const apiKey = process.env.API_KEY;
+      const apiKey = process.env.NEXT_PUBLIC_API_KEY;
       const tags = [selectedMealType, selectedCuisine].filter(Boolean).join(' ');
 
       const resp = await axios.get(`https://api.spoonacular.com/recipes/random`, {
