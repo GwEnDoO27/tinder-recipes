@@ -5,6 +5,8 @@ import axios from "axios";
 import { useCallback, useState } from "react";
 import { CardContent } from "./_Comps/Card";
 import { SelectTypeCuisine, SelectTypeFood } from "./_Comps/Select";
+import { Title } from "./_Comps/Title";
+
 interface Recipe {
   id: number;
   title: string;
@@ -27,7 +29,7 @@ export default function Home() {
         params: {
           apiKey,
           tags,
-          number: 10,
+          number: 5,
           limitLicense: true
         },
         paramsSerializer: params => {
@@ -54,25 +56,29 @@ export default function Home() {
   <Button onClick={getRandomRecipes}>Rechercher des recettes</Button>
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
+    <main className="flex h-screen w-full flex-col items-center">
+      <Title />
       <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
         <SelectTypeFood onValueChange={handleMealTypeChange} />
         <SelectTypeCuisine onValueChange={handleCuisineChange} />
         <Button onClick={getRandomRecipes}>Rechercher des recettes</Button>
       </div>
 
-      {recipes.length > 0 && (
-        <CardContent
-          recipes={recipes.map(recipe => ({
-            id: recipe.id,
-            title: recipe.title,
-            readyInMinutes: recipe.readyInMinutes,
-            sourceUrl: recipe.sourceUrl,
-            image: recipe.image,
-            link: `/recipe/${recipe.id}`,
-          }))}
-        />
-      )}
+      <div className="flex w-full h-full justify-between">
+        {recipes.length > 0 && (
+          <CardContent
+            recipes={recipes.map(recipe => ({
+              id: recipe.id,
+              title: recipe.title,
+              readyInMinutes: recipe.readyInMinutes,
+              sourceUrl: recipe.sourceUrl,
+              image: recipe.image,
+              link: `/recipe/${recipe.id}`,
+            }))}
+
+          />
+        )}
+      </div>
     </main>
   );
 }

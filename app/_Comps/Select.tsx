@@ -1,6 +1,6 @@
 "use client"
 
-import { Check, ChevronsUpDown } from "lucide-react"
+import { ChevronsUpDown, Search, Utensils, ChefHat } from "lucide-react"
 import * as React from "react"
 
 import { Button } from "@/components/ui/button"
@@ -22,23 +22,23 @@ import { cn } from "@/lib/utils"
 const MealsType = [
     {
         value: "main course",
-        label: "Main Course",
+        label: "Plat Principal",
     },
     {
         value: "side dish",
-        label: "Side Dish",
+        label: "Accompagnement",
     },
     {
         value: "snack",
-        label: "Snack",
+        label: "Collation",
     },
     {
         value: "soup",
-        label: "Soup",
+        label: "Soupe",
     },
     {
         value: "salad",
-        label: "Salad",
+        label: "Salade",
     },
 ]
 
@@ -53,15 +53,18 @@ export function SelectTypeFood({ onValueChange }: { onValueChange: (value: strin
                     variant="outline"
                     role="combobox"
                     aria-expanded={open}
-                    className="w-[300px] justify-between"
+                    className="w-[350px] justify-between"
                 >
-                    {value
-                        ? MealsType.find((MealsType) => MealsType.value === value)?.label
-                        : "Sélectionner un type de repas..."}
+                    <div className="flex items-center">
+                        <Utensils className="mr-2 h-4 w-4" />
+                        {value
+                            ? MealsType.find((MealsType) => MealsType.value === value)?.label
+                            : "Sélectionner un type de repas..."}
+                    </div>
                     <ChevronsUpDown className="ml-2 h-4 w-6 shrink-0 opacity-50" />
                 </Button>
             </PopoverTrigger>
-            <PopoverContent className="w-[300px] p-0">
+            <PopoverContent className="w-[350px] p-0">
                 <Command>
                     <CommandInput placeholder="Rechercher un type de repas..." />
                     <CommandList>
@@ -75,10 +78,10 @@ export function SelectTypeFood({ onValueChange }: { onValueChange: (value: strin
                                         const newValue = currentValue === value ? "" : currentValue;
                                         setValue(newValue)
                                         setOpen(false)
-                                        onValueChange(newValue) // Appel de la fonction callback
+                                        onValueChange(newValue)
                                     }}
                                 >
-                                    <Check
+                                    <Search
                                         className={cn(
                                             "mr-2 h-4 w-4",
                                             value === MealsType.value ? "opacity-100" : "opacity-0"
@@ -180,15 +183,19 @@ export function SelectTypeCuisine({ onValueChange }: { onValueChange: (value: st
                     variant="outline"
                     role="combobox"
                     aria-expanded={open}
-                    className="w-[300px] justify-between"
+                    className="w-[350px] justify-between"
                 >
-                    {value
-                        ? CusisineType.find((CusisineType) => CusisineType.value === value)?.label
-                        : "Sélectionner un type de cuisine..."}
+                    <div className="flex items-center">
+                        <ChefHat className="mr-2 h-4 w-4" />
+                        {value
+                            ? MealsType.find((MealsType) => MealsType.value === value)?.label
+                            : "Sélectionner un type de repas..."}
+                    </div>
                     <ChevronsUpDown className="ml-2 h-4 w-6 shrink-0 opacity-50" />
+
                 </Button>
             </PopoverTrigger>
-            <PopoverContent className="w-[300px] p-0">
+            <PopoverContent className="w-[350px] p-0">
                 <Command>
                     <CommandInput placeholder="Rechercher un type de cuisine..." />
                     <CommandList>
@@ -205,7 +212,7 @@ export function SelectTypeCuisine({ onValueChange }: { onValueChange: (value: st
                                         onValueChange(newValue) // Appel de la fonction callback
                                     }}
                                 >
-                                    <Check
+                                    <Search
                                         className={cn(
                                             "mr-2 h-4 w-4",
                                             value === CusisineType.value ? "opacity-100" : "opacity-0"
