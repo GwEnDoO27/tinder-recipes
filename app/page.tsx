@@ -56,8 +56,9 @@ export default function Home() {
   <Button onClick={getRandomRecipes}>Rechercher des recettes</Button>
 
   return (
-    <main className="flex h-screen w-full flex-col items-center">
-      <Title />
+    <main className="flex h-screen w-full flex-col items-center font-mono bg-gradient-to-bl from-pink-300 to-yellow-400">
+      <h1 className="flex h-auto text-white text-5xl font-extrabold drop-shadow-glow p-16 font-mono">Tinder Recipes</h1>
+      {/* <Title /> */}
       <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
         <SelectTypeFood onValueChange={handleMealTypeChange} />
         <SelectTypeCuisine onValueChange={handleCuisineChange} />

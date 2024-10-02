@@ -188,11 +188,10 @@ export function SelectTypeCuisine({ onValueChange }: { onValueChange: (value: st
                     <div className="flex items-center">
                         <ChefHat className="mr-2 h-4 w-4" />
                         {value
-                            ? MealsType.find((MealsType) => MealsType.value === value)?.label
-                            : "Sélectionner un type de repas..."}
+                            ? CusisineType.find((cuisine) => cuisine.value === value)?.label
+                            : "Sélectionner un type de cuisine..."}
                     </div>
                     <ChevronsUpDown className="ml-2 h-4 w-6 shrink-0 opacity-50" />
-
                 </Button>
             </PopoverTrigger>
             <PopoverContent className="w-[350px] p-0">
@@ -209,7 +208,7 @@ export function SelectTypeCuisine({ onValueChange }: { onValueChange: (value: st
                                         const newValue = currentValue === value ? "" : currentValue;
                                         setValue(newValue)
                                         setOpen(false)
-                                        onValueChange(newValue) // Appel de la fonction callback
+                                        onValueChange(newValue) 
                                     }}
                                 >
                                     <Search
